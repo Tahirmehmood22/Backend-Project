@@ -1,41 +1,53 @@
 import React, { useEffect, useState } from 'react';
-import MovieForm from '../components/MovieForm';
 import MovieList from '../components/MovieList';
+import MovieForm from '../components/MovieForm';
 
 function Home() {
   const [movies, setMovies] = useState([]);
 
   const fetchMovies = async () => {
-    const res = await fetch('http://localhost:3001/api/movies');
-    const data = await res.json();
-    setMovies(data);
-  };
-
-  const addMovie = async (movie) => {
-    await fetch('http://localhost:3001/api/movies', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(movie),
-    });
-    fetchMovies();
-  };
-
-  const deleteMovie = async (id) => {
-    await fetch(`http://localhost:3001/api/movies/${id}`, {
-      method: 'DELETE',
-    });
-    fetchMovies();
+    try {
+      const res = await fetch('http://localhost:3001/api/movies');
+      const data = await res.json();
+      if (res.ok) {
+        setMovies(data);
+      } else {
+        console.error('Failed to fetch movies:', data.message);
+      }
+    } catch (err) {
+      console.error('Error fetching movies:', err);
+    }
   };
 
   useEffect(() => {
     fetchMovies();
   }, []);
 
+  const handleDelete = async (id) => {
+    try {
+      const res = await fetch(`http://localhost:3001/api/movies/${id}`, {
+        method: 'DELETE',
+      });
+      if (res.ok) {
+        setMovies((prev) => prev.filter((movie) => movie._id !== id));
+      } else {
+        const data = await res.json();
+        console.error('Delete failed:', data.message);
+      }
+    } catch (err) {
+      console.error('Error deleting movie:', err);
+    }
+  };
+
+  const handleMovieAdded = (newMovie) => {
+    setMovies((prev) => [...prev, newMovie]);
+  };
+
   return (
-    <>
-      <MovieForm onSubmit={addMovie} />
-      <MovieList movies={movies} onDelete={deleteMovie} />
-    </>
+    <div>
+      <MovieForm onMovieAdded={handleMovieAdded} />
+      <MovieList movies={movies} onDelete={handleDelete} />
+    </div>
   );
 }
 

@@ -1,35 +1,48 @@
 import React, { useEffect, useState } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import MovieForm from '../components/MovieForm';
-import { useNavigate, useParams } from 'react-router-dom';
 
 function EditMovie() {
-  const [movie, setMovie] = useState(null);
   const { id } = useParams();
   const navigate = useNavigate();
+  const [movie, setMovie] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchMovie = async () => {
-      const res = await fetch(`http://localhost:3001/api/movies/${id}`);
-      const data = await res.json();
-      setMovie(data);
+      try {
+        const res = await fetch(`http://localhost:3001/api/movies/${id}`);
+        const data = await res.json();
+        if (res.ok) {
+          setMovie(data);
+        } else {
+          alert('Movie not found.');
+          navigate('/');
+        }
+      } catch (err) {
+        console.error('Error fetching movie:', err);
+        alert('Failed to fetch movie.');
+        navigate('/');
+      } finally {
+        setLoading(false);
+      }
     };
+
     fetchMovie();
-  }, [id]);
+  }, [id, navigate]);
 
-  const updateMovie = async (updatedMovie) => {
-    await fetch(`http://localhost:3001/api/movies/${id}`, {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(updatedMovie),
-    });
-    navigate('/');
-  };
-
-  if (!movie) return <div>Loading...</div>;
+  if (loading) return <p>Loading...</p>;
 
   return (
-    <div>
-      <MovieForm onSubmit={updateMovie} initialData={movie} />
+    <div className="edit-movie-page">
+      <h2>Edit Movie</h2>
+      <MovieForm
+        initialData={movie}
+        onMovieUpdated={() => {
+          alert('Movie updated successfully!');
+          navigate('/');
+        }}
+      />
     </div>
   );
 }

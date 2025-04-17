@@ -1,8 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link, Outlet, useLocation } from 'react-router-dom';
 
 function App() {
   const location = useLocation();
+
+  // Track page views on route change
+  useEffect(() => {
+    if (window.gtag) {
+      window.gtag('config', 'G-J6LV9SRFTY', {
+        page_path: location.pathname,
+      });
+    }
+  }, [location]);  
 
   return (
     <div className="container">

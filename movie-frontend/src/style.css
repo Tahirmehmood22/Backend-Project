@@ -1,4 +1,4 @@
-/* Global Styles */
+
 body {
   margin: 0;
   padding: 0;
@@ -7,7 +7,6 @@ body {
   color: #ffffff;
 }
 
-/* Navbar */
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -41,12 +40,10 @@ body {
   color: #00f5d4;
 }
 
-/* App Content Wrapper */
 main.app-content {
   padding: 2rem;
 }
 
-/* Movie Form */
 .movie-form {
   display: flex;
   gap: 1rem;
@@ -76,7 +73,6 @@ main.app-content {
   background-color: #00f5d4;
 }
 
-/* Movie List Items */
 .movie-item {
   background-color: #1f1f1f;
   padding: 1rem;
@@ -110,7 +106,6 @@ main.app-content {
   background-color: #555;
 }
 
-/* NotFound Page */
 .notfound {
   text-align: center;
   margin-top: 4rem;
@@ -118,7 +113,6 @@ main.app-content {
   color: #ff6b6b;
 }
 
-/* Responsive */
 @media (max-width: 600px) {
   .movie-form {
     flex-direction: column;
@@ -137,7 +131,7 @@ main.app-content {
 
 .nav-links {
   display: flex;
-  gap: 20px; /* adds space between Home and Add */
+  gap: 20px; 
   align-items: center;
 }
 
@@ -180,6 +174,15 @@ main.app-content {
 
 .movie-actions button:hover {
   background-color: #555;
+}
+
+.error-messages {
+  background-color: #ffdddd;
+  color: #b00020;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
 }
 
 
