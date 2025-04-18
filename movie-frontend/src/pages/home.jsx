@@ -1,9 +1,12 @@
+
 import React, { useEffect, useState } from 'react';
+import { useOutletContext } from 'react-router-dom';
 import MovieList from '../components/MovieList';
 import MovieForm from '../components/MovieForm';
 
 function Home() {
   const [movies, setMovies] = useState([]);
+  const { user } = useOutletContext(); // 
 
   const fetchMovies = async () => {
     try {
@@ -29,7 +32,9 @@ function Home() {
         method: 'DELETE',
       });
       if (res.ok) {
+        const deletedMovie = movies.find((m) => m._id === id);
         setMovies((prev) => prev.filter((movie) => movie._id !== id));
+        alert(`${deletedMovie.title} has been deleted successfully!`);
       } else {
         const data = await res.json();
         console.error('Delete failed:', data.message);
@@ -41,12 +46,16 @@ function Home() {
 
   const handleMovieAdded = (newMovie) => {
     setMovies((prev) => [...prev, newMovie]);
+    alert(`${newMovie.title} has been added successfully!`);
   };
 
   return (
     <div>
-      <MovieForm onMovieAdded={handleMovieAdded} />
-      <MovieList movies={movies} onDelete={handleDelete} />
+      {/* ✅ Only show form if user is logged in */}
+      {user && <MovieForm onMovieAdded={handleMovieAdded} />}
+
+      {/* ✅ Pass user to control Edit/Delete visibility */}
+      <MovieList movies={movies} onDelete={handleDelete} user={user} />
     </div>
   );
 }

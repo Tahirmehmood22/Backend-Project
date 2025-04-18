@@ -1,31 +1,35 @@
-import React, { useEffect } from 'react';
-import { Link, Outlet, useLocation } from 'react-router-dom';
+
+
+import React, { useEffect, useState } from 'react';
+import { Outlet, useLocation } from 'react-router-dom';
+import Navbar from './components/NavBar';
 
 function App() {
   const location = useLocation();
+  const [user, setUser] = useState(null);
 
-  // Track page views on route change
   useEffect(() => {
     if (window.gtag) {
       window.gtag('config', 'G-J6LV9SRFTY', {
         page_path: location.pathname,
       });
     }
-  }, [location]);  
+  }, [location]);
+
+  const handleLogin = (username) => {
+    setUser(username);
+  };
+
+  const handleLogout = () => {
+    setUser(null);
+  };
 
   return (
     <div className="container">
-      <nav className="navbar">
-        <div className="logo">
-          <span role="img" aria-label="movie">🎬</span> My Movie App
-        </div>
-        <div className="nav-links">
-          <Link to="/" className={location.pathname === '/' ? 'active' : ''}>Home</Link>
-          <Link to="/add" className={location.pathname === '/add' ? 'active' : ''}>Add</Link>
-        </div>
-      </nav>
+      <Navbar user={user} onLogout={handleLogout} />
       <h1><span role="img" aria-label="movie">🎬</span> My Movie App</h1>
-      <Outlet />
+      {/* Pass login context down to pages like LoginPage */}
+      <Outlet context={{ user, onLogin: handleLogin }} />
     </div>
   );
 }

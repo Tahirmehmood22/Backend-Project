@@ -1,3 +1,16 @@
+## ✅ To Run the Project
+
+Run this command  (npm install and npm run dev) to start the project in both Frontend and backend 
+
+## ✅ Login Credentials
+
+
+Username: admin
+
+Password: password
+
+
+
 # 🎬 Movie App 
 
 This is a movie management app built using **React (frontend)** and **Node.js + Express + MongoDB (backend)**. Users can add, edit, delete, and view movies. The app includes validation, tracking, and basic security considerations.
@@ -68,4 +81,6 @@ The backend is stateless and persists data using **MongoDB**. Restarting the ser
 ## ✅ Final Notes
 
 This project meets all required criteria for the course backend assignment, including full CRUD functionality, stateless database handling, proper use of HTTP verbs and status codes, basic tracking, accessibility, and basic security measures.
+
+
 
