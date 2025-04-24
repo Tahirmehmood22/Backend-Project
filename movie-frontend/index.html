@@ -11,7 +11,10 @@
       window.dataLayer = window.dataLayer || [];
       function gtag() { dataLayer.push(arguments); }
       gtag('js', new Date());
-      gtag('config', 'G-J6LV9SRFTY');
+      gtag('config', 'G-J6LV9SRFTY', {
+        'anonymize_ip': true,
+        'cookie_flags': 'SameSite=None; Secure'
+      });
     </script>
 
 
