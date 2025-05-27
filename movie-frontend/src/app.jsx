@@ -1,8 +1,6 @@
-
-
 import React, { useEffect, useState } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
-import Navbar from './components/NavBar';
+import Navbar from './components/Navbar';
 
 function App() {
   const location = useLocation();
@@ -27,8 +25,7 @@ function App() {
   return (
     <div className="container">
       <Navbar user={user} onLogout={handleLogout} />
-      <h1><span role="img" aria-label="movie">🎬</span> My Movie App</h1>
-      {/* Pass login context down to pages like LoginPage */}
+      {/* 🔻 Removed duplicate <h1> */}
       <Outlet context={{ user, onLogin: handleLogin }} />
     </div>
   );

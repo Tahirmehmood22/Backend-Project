@@ -11,9 +11,9 @@ import {
 
 import App from './app';
 import Home from './pages/home';
-import AddMovie from './pages/AddMovie';
-import EditMovie from './pages/EditMovie';
-import NotFound from './pages/NotFound';
+import AddMovie from './pages/addMovie';
+import EditMovie from './pages/editMovie';
+import NotFound from './pages/notFound';
 import LoginPage from './pages/LoginPage';
 import './style.css';
 

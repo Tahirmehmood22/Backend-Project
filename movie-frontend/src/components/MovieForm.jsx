@@ -62,7 +62,7 @@ function MovieForm({ initialData, onMovieAdded, onMovieUpdated }) {
   };
 
   return (
-    <form className="form" onSubmit={handleSubmit}>
+    <form className="form-inline" onSubmit={handleSubmit}>
       {errors.length > 0 && (
         <div className="error-messages">
           <ul>
@@ -73,24 +73,42 @@ function MovieForm({ initialData, onMovieAdded, onMovieUpdated }) {
         </div>
       )}
 
-      <input
-        type="text"
-        placeholder="Movie Title"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-      />
-      <input
-        type="number"
-        placeholder="Year"
-        value={year}
-        onChange={(e) => setYear(e.target.value)}
-      />
-      <input
-        type="text"
-        placeholder="Genre"
-        value={genre}
-        onChange={(e) => setGenre(e.target.value)}
-      />
+      <div className="form-group-inline">
+        <label htmlFor="title">Movie Title</label>
+        <input
+          id="title"
+          type="text"
+          placeholder="Movie Title"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          required
+        />
+      </div>
+
+      <div className="form-group-inline">
+        <label htmlFor="year">Year</label>
+        <input
+          id="year"
+          type="number"
+          placeholder="Year"
+          value={year}
+          onChange={(e) => setYear(e.target.value)}
+          required
+        />
+      </div>
+
+      <div className="form-group-inline">
+        <label htmlFor="genre">Genre</label>
+        <input
+          id="genre"
+          type="text"
+          placeholder="Genre"
+          value={genre}
+          onChange={(e) => setGenre(e.target.value)}
+          required
+        />
+      </div>
+
       <button type="submit">{isEditMode ? 'Update' : 'Add'}</button>
     </form>
   );
