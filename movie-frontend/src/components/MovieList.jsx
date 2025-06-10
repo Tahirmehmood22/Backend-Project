@@ -1,4 +1,3 @@
-
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -18,7 +17,10 @@ const MovieList = ({ movies, onDelete, user }) => {
           {user && (
             <div className="movie-actions">
               <button onClick={() => navigate(`/edit/${movie._id}`)}>Edit</button>
-              <button onClick={() => onDelete(movie._id)}>Delete</button>
+              <button onClick={() => onDelete(movie._id)}
+              >
+                Delete
+              </button>
             </div>
           )}
         </div>

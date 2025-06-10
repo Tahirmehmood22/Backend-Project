@@ -30,9 +30,9 @@ body {
 }
 
 .navbar-links .nav-link {
-  color: #ddd;
+  color: #ffffff; /* Pure white */
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 700; /* Bold */
   background: none;
   border: none;
   font: inherit;
@@ -41,18 +41,40 @@ body {
 
 .navbar-links .nav-link:hover,
 .navbar-links .nav-link.active {
-  color: #00f5d4;
+  color: #1E88E5; /* Blue hover */
+}
+
+/* Navbar Button (Logout) */
+.navbar-links .navbar-button {
+  background: none;
+  border: none;
+  color: #ffffff; /* Pure white */
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0;
+}
+
+.navbar-links .navbar-button:hover {
+  color: #1E88E5; /* Blue hover */
 }
 
 main.app-content {
   padding: 2rem;
 }
 
-.movie-form {
+/* Movie Form */
+.form-inline {
   display: flex;
+  align-items: flex-end;
+  flex-wrap: wrap;
   gap: 1rem;
   margin-bottom: 2rem;
-  flex-wrap: wrap;
+}
+
+.form-group-inline {
+  display: flex;
+  flex-direction: column;
 }
 
 .movie-form input {
@@ -64,19 +86,21 @@ main.app-content {
 }
 
 .movie-form button {
-  background-color: #00c896;
+  background-color: #1E88E5; /* Blue */
   border: none;
-  color: white;
+  color: #ffffff;
   padding: 0.5rem 1rem;
   border-radius: 4px;
   cursor: pointer;
-  font-weight: bold;
+  font-weight: 700;
 }
 
 .movie-form button:hover {
-  background-color: #00f5d4;
+  background-color: #1565C0; /* Darker blue on hover */
+  color: #ffffff;
 }
 
+/* Movie List */
 .movie-item {
   background-color: #1f1f1f;
   padding: 1rem;
@@ -98,18 +122,31 @@ main.app-content {
 }
 
 .movie-buttons button {
-  background-color: #333;
-  color: #fff;
+  background-color: #0e0f10; /* Blue */
+  color: #ffffff;
   border: none;
-  padding: 0.4rem 0.8rem;
-  border-radius: 4px;
+  padding: 0.3rem 0.8rem;
+  border-radius: 5px;
   cursor: pointer;
+  font-weight: 700;
 }
 
 .movie-buttons button:hover {
-  background-color: #555;
+  background-color: #1565C0; /* Darker blue */
+  color: #ffffff;
 }
 
+/* Error Messages */
+.error-messages {
+  background-color: #ffdddd;
+  color: #b00020;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+/* Not Found Page */
 .notfound {
   text-align: center;
   margin-top: 4rem;
@@ -117,8 +154,9 @@ main.app-content {
   color: #ff6b6b;
 }
 
+/* Responsive */
 @media (max-width: 600px) {
-  .movie-form {
+  .form-inline {
     flex-direction: column;
   }
 
@@ -168,35 +206,28 @@ main.app-content {
 }
 
 .movie-actions button {
-  background-color: #333;
-  color: #fff;
+  background-color: #1E88E5; /* Blue */
+  color: #ffffff;
   border: none;
   padding: 0.3rem 0.8rem;
   border-radius: 5px;
   cursor: pointer;
+  font-weight: 700;
 }
 
 .movie-actions button:hover {
-  background-color: #555;
+  background-color: #1565C0;
+  color: #ffffff;
 }
 
-.error-messages {
-  background-color: #ffdddd;
-  color: #b00020;
-  padding: 10px;
-  border-radius: 5px;
-  margin-bottom: 1rem;
-  font-size: 0.9rem;
-}
-
-/* ✅ Login Page Styling */
+/* Login Page */
 .login-page {
   max-width: 400px;
   margin: 2rem auto;
   background-color: #1f1f1f;
   padding: 2rem;
   border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 .login-page h2 {
@@ -230,64 +261,21 @@ main.app-content {
   border-radius: 4px;
 }
 
-.login-page button {
-  background-color: #00c896;
-  border: none;
-  color: white;
-  padding: 0.6rem 1rem;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-.login-page button:hover {
-  background-color: #00f5d4;
-}
-
-/* ✅ Inline Movie Form (Home page) */
-.form-inline {
-  display: flex;
-  align-items: flex-end;
-  flex-wrap: wrap;
-  gap: 1rem;
-  margin-bottom: 2rem;
-}
-
-.form-group-inline {
-  display: flex;
-  flex-direction: column;
-}
-
-.login-page .form-group {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 1rem;
-}
-
-.login-page label {
-  margin-bottom: 0.4rem;
-  font-weight: 500;
-  color: #ffffff;
-}
-
-.login-page input {
-  padding: 0.6rem 0.8rem;
-  background-color: #2a2a2a;
-  border: 1px solid #444;
-  color: #fff;
-  border-radius: 4px;
-}
-
+.login-page button,
 .login-button {
-  background-color: #00c896;
-  color: #121212; /* Darker text for better contrast */
-  padding: 0.6rem 1rem;
+  background-color: #1E88E5; /* Blue */
+  color: #ffffff;
+  padding: 0.6rem 1.2rem;
   border: none;
   border-radius: 4px;
-  font-weight: bold;
+  font-weight: 700;
+  font-size: 1.1rem;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
+.login-page button:hover,
 .login-button:hover {
-  background-color: #00f5d4;
+  background-color: #1565C0;
+  color: #ffffff;
 }

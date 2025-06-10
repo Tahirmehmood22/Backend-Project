@@ -19,7 +19,12 @@ const Navbar = ({ user, onLogout }) => {
           <>
             <li className="nav-link">Welcome, {user}</li>
             <li>
-              <button className="nav-link" onClick={onLogout}>Logout</button>
+              <button
+                className="nav-link navbar-button"  // ✅ Use navbar-button for proper styling
+                onClick={onLogout}
+              >
+                Logout
+              </button>
             </li>
           </>
         )}
